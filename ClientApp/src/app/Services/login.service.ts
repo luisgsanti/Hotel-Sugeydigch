@@ -55,7 +55,7 @@ export class LoginService {
     `${this.baseUrl + 'api/Login'}/${Login.id}`;
     return this.http.put(url, Login, httpOptions).pipe(
     tap(/*_ => this.log(`updated Login id=${Login.id}`)*/),
-    catchError(this.handleError<any>('Login'))
+    catchError(this.handleError<any>('ERROR AL MODIFICAR LOS DATOS DE LA CUENTA'))
     );
   }
 

@@ -183,7 +183,6 @@ export class NuevaReservaRecepcionistaComponent implements OnInit {
 
     var Fecha1 = new Date(this.reserva.fechaIngreso);
     var Fecha2 = new Date(this.reserva.fechaSalida);
-    alert(""+fechaActual);
     if(Fecha1.getTime()<fechaActual.getTime() || Fecha1.getTime()>=Fecha2.getTime()){
       alert("ERROR, FECHAS INCONSISTENTES");
     }else{

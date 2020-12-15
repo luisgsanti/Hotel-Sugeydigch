@@ -54,8 +54,8 @@ export class ClienteService {
    update (cliente: Cliente): Observable<any> {
     const url =`${this.baseUrl + 'api/Cliente'}/${cliente.id}`;
     return this.http.put(url, cliente, httpOptions).pipe(
-    tap(_ => this.log(`DATOS MODIFICADOS CORRECTAMENTE`)),
-    catchError(this.handleError<any>('cliente'))
+    tap(_ => this.log(`DATOS PERSONALES MODIFICADOS CORRECTAMENTE`)),
+    catchError(this.handleError<any>('ERROR AL MODIFICAR LOS DATOS'))
     );
   }
 
@@ -75,7 +75,7 @@ export class ClienteService {
   private handleError<T> (operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
     console.error(error);
-    this.log(`${operation} failed: ${error.message}`);
+    this.log(`${operation}`);
     return of(result as T);
     };
   }
