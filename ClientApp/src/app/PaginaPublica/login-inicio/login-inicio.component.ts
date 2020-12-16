@@ -46,10 +46,10 @@ export class LoginInicioComponent implements OnInit {
 
       if(objeto.clave === this.log.clave){
         this.authService.login(this.log.usuario,this.log.rol, this.log.identificacion);
-        alert(JSON.stringify("Ha sido logeado con exito: " + this.log.usuario));
+        alert(JSON.stringify("Bienvenido " + this.log.usuario));
         this.close();
       }else{
-        alert("Usuario o Clave Incorrecto");
+        alert("USUARIO O CLAVE INCORRECTOS");
       }
     });
   }

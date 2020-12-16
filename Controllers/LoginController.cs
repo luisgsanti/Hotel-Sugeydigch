@@ -34,6 +34,12 @@ namespace HyR_Sugeydigch.Controllers
         return await _context.Login.Where(p=>p.Rol!="CLIENTE").ToListAsync();
         }
 
+        [HttpGet("Completo")]
+        public async Task<ActionResult<IEnumerable<Login>>> GetTaskItemsCompleto()
+        {
+        return await _context.Login.ToListAsync();
+        }
+
         // GET: api/Login/5
         [HttpGet("{usuario}")]
         public async Task<ActionResult<Login>> GetTaskItem(string usuario)

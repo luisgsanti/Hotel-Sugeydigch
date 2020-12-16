@@ -21,7 +21,7 @@ export class LoginService {
   addLogin (loger: Login): Observable<Login> {
     return this.http.post<Login>(this.baseUrl+'api/Login', loger, httpOptions).pipe(
     tap((newLogin: Login) => this.log(`Recuerde\nUsuario: ${newLogin.usuario} \nContraseña: ${newLogin.clave}`)),
-    catchError(this.handleError<Login>('addLogin'))
+    catchError(this.handleError<Login>('EMPLEADO AÑADIDO CORRECTAMENTE'))
     );
   }
 
@@ -36,7 +36,7 @@ export class LoginService {
     const url = `${this.baseUrl + 'api/Login'}/${user}`;
     return this.http.get<Login>(url).pipe(
     tap(),
-    catchError(this.handleError<Login>(`Usuario no valido`))
+    catchError(this.handleError<Login>(`NO PUEDE DEJAR CAMPOS VACIOS`))
     );
   }
 
@@ -45,7 +45,7 @@ export class LoginService {
     const url = `${this.baseUrl + 'api/Login'}/Get/${id}`;
     return this.http.get<Login>(url).pipe(
     tap(),
-    catchError(this.handleError<Login>(`Usuario no valido`))
+    catchError(this.handleError<Login>(`INGRESE UN USUARIO Y CONTRASEÑA VALIDO`))
     );
   }
   

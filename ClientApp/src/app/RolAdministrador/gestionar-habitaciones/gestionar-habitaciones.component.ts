@@ -39,7 +39,6 @@ export class GestionarHabitacionesComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
     if (this.registerForm.invalid) {
-      alert("ERROR AL AÑADIR HABITACION, POR FAVOR INTENTELO NUEVAMENTE");
       return;
     }
     this.add();
@@ -47,9 +46,17 @@ export class GestionarHabitacionesComponent implements OnInit {
   }
 
   add() {
-    this.habitacion.estado="DISPONIBLE";
-    this.habitacionservice.add(this.habitacion).subscribe();
-    this.onReset();
+    if(this.habitacion.numeroHabitacion > 999 || this.habitacion.numeroHabitacion < 1){
+      alert("EL NUMERO DE LA HABITACION DEBE ESTAR ENTRE 1 Y 999");
+    }else{
+      if(this.habitacion.numeroCamas > 5 ||this.habitacion.numeroCamas < 1){
+        alert("EL NUMERO DE CAMAS DEBE ESTAR ENTRE 1 Y 5");
+      }else{
+        this.habitacion.estado="DISPONIBLE";
+        this.habitacionservice.add(this.habitacion).subscribe();
+        this.onReset();
+      }
+    }
   }
 
   onReset() {

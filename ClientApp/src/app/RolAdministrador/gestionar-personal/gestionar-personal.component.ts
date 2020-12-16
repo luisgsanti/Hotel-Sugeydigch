@@ -44,9 +44,28 @@ export class GestionarPersonalComponent implements OnInit {
     this.add();
   }
 
+  id: Number;
+
   add() {
-    this.loginService.addLogin(this.login).subscribe();
-    this.onReset();
+
+    this.id = parseInt(this.login.identificacion)
+    
+    if(this.id < 9999 || this.id>99999999999){
+      alert("LA IDENTIFICACION INGRESADA DEBE TENER ENTRE 5 Y 11 CARACTERES");
+    }else{
+      if(this.login.usuario.length > 10 || this.login.usuario.length < 4){
+        alert("EL NOMBRE DE USUARIO DEBE TENER ENTRE 4 Y 10 CARACTERES");
+      }else{
+        if(this.login.clave.length<4){
+          alert("LA CONTRASEÑA DEBE TENER MINIMO 4 CARACTERES");
+        }else{
+          this.loginService.addLogin(this.login).subscribe();
+        this.onReset();
+        }
+      }
+    }
+
+    
   }
 
   onReset() {
